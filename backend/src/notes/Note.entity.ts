@@ -1,10 +1,10 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { IsString, Max, MaxLength, Min, MinLength } from 'class-validator';
+import { IsString, MaxLength, MinLength } from 'class-validator';
 
-@Entity()
+@Entity({name: 'note'})
 export class Note extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  noteid: number;
 
   @Column({ length: 150 })
   @MinLength(1)
