@@ -21,6 +21,8 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import CustomAppBar from './AppBar';
+import CustomDrawer from './Drawer';
 
 function Copyright(props: any) {
   return (
@@ -41,49 +43,49 @@ interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
 }
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
+// const AppBar = styled(MuiAppBar, {
+//   shouldForwardProp: (prop) => prop !== 'open',
+// })<AppBarProps>(({ theme, open }) => ({
+//   zIndex: theme.zIndex.drawer + 1,
+//   transition: theme.transitions.create(['width', 'margin'], {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   ...(open && {
+//     marginLeft: drawerWidth,
+//     width: `calc(100% - ${drawerWidth}px)`,
+//     transition: theme.transitions.create(['width', 'margin'], {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.enteringScreen,
+//     }),
+//   }),
+// }));
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    '& .MuiDrawer-paper': {
-      position: 'relative',
-      whiteSpace: 'nowrap',
-      width: drawerWidth,
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      boxSizing: 'border-box',
-      ...(!open && {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up('sm')]: {
-          width: theme.spacing(9),
-        },
-      }),
-    },
-  }),
-);
+// const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+//   ({ theme, open }) => ({
+//     '& .MuiDrawer-paper': {
+//       position: 'relative',
+//       whiteSpace: 'nowrap',
+//       width: drawerWidth,
+//       transition: theme.transitions.create('width', {
+//         easing: theme.transitions.easing.sharp,
+//         duration: theme.transitions.duration.enteringScreen,
+//       }),
+//       boxSizing: 'border-box',
+//       ...(!open && {
+//         overflowX: 'hidden',
+//         transition: theme.transitions.create('width', {
+//           easing: theme.transitions.easing.sharp,
+//           duration: theme.transitions.duration.leavingScreen,
+//         }),
+//         width: theme.spacing(7),
+//         [theme.breakpoints.up('sm')]: {
+//           width: theme.spacing(9),
+//         },
+//       }),
+//     },
+//   }),
+// );
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -98,7 +100,7 @@ export default function Dashboard() {
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        {/* <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -131,8 +133,9 @@ export default function Dashboard() {
               </Badge>
             </IconButton>
           </Toolbar>
-        </AppBar>
-        <Drawer variant="permanent" open={open}>
+        </AppBar> */}
+        <CustomAppBar open={open} toggleDrawer={toggleDrawer} />
+        {/* <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
               display: 'flex',
@@ -151,7 +154,8 @@ export default function Dashboard() {
             <Divider sx={{ my: 1 }} />
             {secondaryListItems}
           </List>
-        </Drawer>
+        </Drawer> */}
+        <CustomDrawer open={open} toggleDrawer={toggleDrawer} mainListItems={mainListItems} secondaryListItems={secondaryListItems} />
         <Box
           component="main"
           sx={{
