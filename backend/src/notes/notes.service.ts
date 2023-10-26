@@ -33,6 +33,7 @@ export class NotesServices {
         (await editedNote).description = note.description;
         (await editedNote).title = note.title;
         await (await editedNote).save();
+        console.log('From service:',editedNote);
         return editedNote;
     } 
 

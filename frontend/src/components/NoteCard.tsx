@@ -8,9 +8,20 @@ interface NoteCardProps {
   noteid: number;
   title: string;
   description: string;
+  onDelete: (noteid: number) => void;
+  onEdit: (noteid:number) => void;
 }
 
-const NoteCard: React.FC<NoteCardProps> = ({ noteid, title, description }) => {
+const NoteCard: React.FC<NoteCardProps> = ({ noteid, title, description, onDelete, onEdit }) => {
+
+  const handleEdit = () => {
+    onEdit(noteid);
+  }
+
+  const handleDelete = () => {
+    onDelete(noteid);
+  };
+
   return (
     <Card variant="outlined" sx={{ width: 300 }}> 
       <CardContent>
@@ -22,7 +33,8 @@ const NoteCard: React.FC<NoteCardProps> = ({ noteid, title, description }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Edit</Button>
+        <Button size="small" onClick={handleEdit}>Edit</Button>
+        <Button size="small" onClick={handleDelete}>Delete</Button>
       </CardActions>
     </Card>
   );

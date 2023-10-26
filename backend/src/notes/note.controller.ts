@@ -34,6 +34,7 @@ export class NotesController {
     @Patch(':id')
     async editNote(@Body() note: Note, @Param('id') noteid: number): Promise<Note> {
       const noteEdited = await this.notesService.editNote(noteid, note);
+      console.log('From controller:',noteEdited);
       return noteEdited;
     }
   
