@@ -12,7 +12,9 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { styled } from '@mui/system';
 
-// Define the prop types for the CustomAppBar component
+
+
+
 interface AppBarProps {
   open: boolean;
   toggleDrawer: () => void;
@@ -54,6 +56,7 @@ const CustomAppBar: React.FC<AppBarProps> = ({ open, toggleDrawer }) => {
         >
           <MenuIcon />
         </IconButton>
+       
         <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
           Notes App v1.0
         </Typography>

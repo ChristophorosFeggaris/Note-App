@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import NoteCard from '../components/NoteCard';
 import { Box, Button, Divider, Grid, Modal, TextField, Typography } from '@mui/material';
 import * as yup from "yup";
+import Layout from '../components/Layout';
 
 const NotesSchema = yup.object().shape({
   title: yup.string().required("Please add a name."),
@@ -147,6 +148,7 @@ export function Notes(): JSX.Element {
 
   return (
     <div>
+      {/* <Layout> */}
        <Modal open={isModalOpen} onClose={closeModal}>
         <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', bgcolor: 'background.paper', borderRadius: '8px', boxShadow: 24, p: 4, minWidth: 100 }}>
           <Typography variant="h6">
@@ -196,7 +198,7 @@ export function Notes(): JSX.Element {
           </form>
         </Box>
       </Modal>
-
+      
       <Typography variant="h3" fontWeight={700} >
           Notes Page
       </Typography>
@@ -265,6 +267,7 @@ export function Notes(): JSX.Element {
         ))}
       </div>
       </Box>
+      {/* </Layout> */}
     </div>
   );
 };

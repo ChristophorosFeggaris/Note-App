@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
+    <ListItemButton component={Link} to="/">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
@@ -38,9 +38,9 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <React.Fragment>
-    <ListSubheader component="div" inset>
+    {/* <ListSubheader component="div" inset>
       Saved reports
-    </ListSubheader>
+    </ListSubheader> */}
     <ListItemButton >
       <ListItemIcon>
         <LogoutIcon />

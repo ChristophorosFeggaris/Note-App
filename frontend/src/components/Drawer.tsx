@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Drawer as MuiDrawer, IconButton, List, Toolbar } from '@mui/material';
+import { Box, Divider, Drawer as MuiDrawer, IconButton, List, Toolbar } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { styled } from '@mui/system';
 
@@ -42,7 +42,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const CustomDrawer: React.FC<DrawerProps> = ({ open, toggleDrawer, mainListItems, secondaryListItems }) => {
   return (
-    <Drawer variant="permanent" open={open} theme={undefined}>
+    <Drawer variant="permanent" open={open} theme={undefined} >
       <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', px: [1] }}>
         <IconButton onClick={toggleDrawer}>
           <ChevronLeftIcon />
