@@ -1,5 +1,6 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { IsString, MaxLength, MinLength } from 'class-validator';
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { IsNumber, IsString, MaxLength, MinLength } from 'class-validator';
+import { User } from 'src/user/entities/user.entity';
 
 @Entity({name: 'note'})
 export class Note extends BaseEntity {
@@ -16,4 +17,8 @@ export class Note extends BaseEntity {
   @MinLength(1)
   @IsString()
   description: string;
+
+  @ManyToOne(() => User, (user) => user.notes)
+  @JoinColumn({name: 'userid'})
+  user: User;
 }
