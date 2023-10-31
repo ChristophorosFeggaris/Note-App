@@ -8,8 +8,9 @@ import {
     Post,
   } from '@nestjs/common';
   import { ParseIntPipe } from '@nestjs/common/pipes/parse-int.pipe';
-import { Note } from 'src/notes/Note.entity';
+import { Note } from 'src/notes/entities/Note.entity';
 import { NotesServices } from 'src/notes/notes.service';
+import { NoteDto } from './dto/note.dto';
   
   
 @Controller('notes')
@@ -23,18 +24,17 @@ export class NotesController {
   
     @Get(':id')
     async findOne(@Param('id', ParseIntPipe) noteid: number) {
-      return await this.notesService.findOne(noteid);
+      return await this.notesService.getNote(noteid);
     }
   
     @Post() 
-    async create(@Body() note: Note) {
-      return await this.notesService.createNote(note);
+    async create(@Body() noteDto: NoteDto) {
+      return await this.notesService.createNote(noteDto);
     }
   
     @Patch(':id')
-    async editNote(@Body() note: Note, @Param('id') noteid: number): Promise<Note> {
-      const noteEdited = await this.notesService.editNote(noteid, note);
-      console.log('From controller:',noteEdited);
+    async editNote(@Body() noteDto: NoteDto, @Param('id') noteid: number) {
+      const noteEdited = await this.notesService.editNote(noteid, noteDto);
       return noteEdited;
     }
   
