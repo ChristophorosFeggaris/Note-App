@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { NotesModule } from './notes/notes.module';
 import {ConfigModule} from '@nestjs/config';
+import { UserModule } from './user/user.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -19,7 +20,7 @@ dotenv.config();
       database: process.env.DB_NAME,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
-  }), NotesModule],
+  }), NotesModule, UserModule],
   controllers: [AppController],
   providers: [AppService],
 })
