@@ -1,6 +1,6 @@
 [submodule "frontend"]
-    path = frontend
-    url = https://github.com/your-username/note-app-fe.git
+	path = frontend
+	url = https://github.com/ChristophorosFeggaris/Note-App-fe.git
 [submodule "backend"]
-    path = backend
-    url = https://github.com/your-username/note-app-be.git
+	path = backend
+	url = https://github.com/ChristophorosFeggaris/Note-App-be.git
